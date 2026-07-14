@@ -134,7 +134,7 @@ The dashboard allows administrators to monitor waste levels, environmental impac
 
 If GitHub does not render the GIF correctly, the demo video is available in:
 
-`assets/demo/demo.mp4.mp4`
+`assets/demo/demo.mp4`
 
 ---
 
