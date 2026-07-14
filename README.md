@@ -1,145 +1,60 @@
-# REVA
+<div align="center">
 
-> **Reviving Earth, One Throw at a Time**
+# ♻️ REVA
 
-An IoT-enabled smart waste management system that automates waste disposal through touchless operation, real-time monitoring, and a web-based dashboard.
+### Reviving the Earth, One Throw at a Time
 
----
+<img src="assets/banner/hero.jpg" width="100%"/>
 
-## Overview
+<br>
 
-REVA is a smart waste management prototype developed to improve campus sanitation by reducing physical contact with waste bins and enabling proactive waste collection.
-
-The system uses an ultrasonic sensor to detect a user's presence, automatically opens the lid using a servo motor, and demonstrates how sensor data can be visualized through a web dashboard for monitoring and decision-making.
+An **IoT-powered Smart Waste Management System** that automates waste disposal using an **Arduino Uno**, **HC-SR04 Ultrasonic Sensors**, a **Servo Motor**, and a **real-time monitoring dashboard**.
 
 ---
 
-## Problem Statement
+![Arduino](https://img.shields.io/badge/Arduino-Uno-00979D?style=for-the-badge&logo=arduino)
+![IoT](https://img.shields.io/badge/IoT-Smart%20Waste-success?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Web%20Dashboard-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Traditional waste bins have several challenges:
-
-- Physical contact increases hygiene risks.
-- Overflowing bins often go unnoticed.
-- Waste collection follows fixed schedules instead of actual need.
-- No real-time monitoring or analytics.
-
+</div>
 ---
 
-## Solution
+# 🎥 Demo
 
-REVA addresses these challenges through an IoT-based approach:
+<p align="center">
+  <img src="assets/demo/demo.mp4" width="900"/>
+</p>
 
-- Touchless lid operation using ultrasonic sensing.
-- Automatic lid movement using a servo motor.
-- Real-time dashboard for monitoring bin status.
-- Data-driven approach for smarter waste management.
-
+<p align="center">
+  <i>REVA automatically detects a user's hand, opens the lid using a servo motor, and updates the dashboard with real-time waste monitoring.</i>
+</p>
 ---
 
-## Features
+# 📖 Overview
+
+REVA is an IoT-based Smart Waste Management System designed to improve hygiene and automate waste disposal.
+
+The system uses an **HC-SR04 Ultrasonic Sensor** to detect when a user approaches the bin. An **Arduino Uno** processes the sensor data and commands a **Servo Motor** to automatically open and close the lid without physical contact.
+
+The prototype also supports a **web dashboard** that displays real-time bin information, allowing administrators to monitor waste levels remotely.
+
+### Objectives
 
 - Touchless waste disposal
-- Ultrasonic object detection
-- Servo-controlled automatic lid
-- Web dashboard prototype
-- Real-time monitoring concept
-- Sustainable smart campus solution
-
+- Better hygiene
+- Smart monitoring
+- Reduced overflow
+- Sustainable waste management
 ---
 
-## Hardware Used
+# ✨ Features
 
-| Component | Purpose |
-|-----------|----------|
-| Arduino Uno | Main controller |
-| HC-SR04 Ultrasonic Sensor | Object detection |
-| SG90 Servo Motor | Lid movement |
-| Breadboard | Circuit prototyping |
-| Jumper Wires | Connections |
-| USB Power | Power supply |
-
----
-
-## Software Stack
-
-- Arduino IDE
-- HTML
-- Tailwind CSS
-- JavaScript
-- Chart.js
-
----
-
-## Repository Structure
-
-```text
-REVA/
-│
-├── arduino/
-├── web-dashboard/
-├── assets/
-├── docs/
-├── hardware/
-├── LICENSE
-└── README.md
-```
-
----
-
-## System Workflow
-
-```text
-User
-   │
-   ▼
-Ultrasonic Sensor
-   │
-   ▼
-Arduino Uno
-   │
-   ├──────────────► Dashboard
-   │
-   ▼
-Servo Motor
-   │
-   ▼
-Dustbin Lid Opens
-```
-
----
-
-## SDG Alignment
-
-- SDG 3 — Good Health and Well-being
-- SDG 6 — Clean Water and Sanitation
-- SDG 11 — Sustainable Cities and Communities
-
----
-
-## Future Improvements
-
-- AI-based waste segregation
-- Solar-powered operation
-- Cloud connectivity
-- Mobile application
-- Route optimization for waste collection
-
----
-
-## Team
-
-- Nakshatra Vijay Vargi
-- Nirmaan Vijay Vargi
-- Chandrahas Thunga
-
----
-
-## Mentor
-
-**Dr. Bhanu Prakash**
-
----
-
-## License
-
-This project is licensed under the MIT License.
+- 🗑️ Automatic touchless lid opening
+- 📏 HC-SR04 ultrasonic distance sensing
+- ⚙️ Servo motor-based lid control
+- 📊 Real-time monitoring dashboard
+- 🌐 IoT-enabled architecture
+- ♻️ Hygienic waste disposal
+- 📈 Smart waste analytics
+- 🟢 Easy to build and low cost
