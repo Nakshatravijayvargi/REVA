@@ -4,7 +4,7 @@
 
 ### Reviving the Earth, One Throw at a Time
 
-<img src="assets/banner/hero.jpg" width="100%"/>
+<img src="assets/banner/hero.jpeg" width="100%"/>
 
 <br>
 
@@ -12,18 +12,21 @@ An **IoT-powered Smart Waste Management System** that automates waste disposal u
 
 ---
 
-![Arduino](https://img.shields.io/badge/Arduino-Uno-00979D?style=for-the-badge&logo=arduino)
-![IoT](https://img.shields.io/badge/IoT-Smart%20Waste-success?style=for-the-badge)
-![Platform](https://img.shields.io/badge/Platform-Web%20Dashboard-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+<p align="center">
 
+<img src="https://img.shields.io/badge/Arduino-Uno-00979D?style=for-the-badge&logo=arduino"/>
+<img src="https://img.shields.io/badge/IoT-Smart%20Waste-success?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Platform-Web%20Dashboard-blue?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge"/>
+
+</p>
 </div>
 ---
 
 # 🎥 Demo
 
 <p align="center">
-  <img src="assets/demo/demo.mp4" width="900"/>
+  <img src="assets/demo/demo.gif" width="900"/>
 </p>
 
 <p align="center">
@@ -65,7 +68,7 @@ The prototype also supports a **web dashboard** that displays real-time bin info
 # 🏗️ System Architecture
 
 <p align="center">
-<img src="assets/diagrams/architecture.jpg.png" width="900">
+<img src="assets/diagrams/architecture.png" width="900">
 </p>
 
 The REVA architecture follows a simple IoT workflow:
@@ -78,7 +81,7 @@ The ultrasonic sensor detects a user's hand, the Arduino processes the input, ac
 # 🔌 Circuit Diagram
 
 <p align="center">
-<img src="assets/diagrams/circuit.jpg.jpeg" width="850">
+<img src="assets/diagrams/circuit.jpeg" width="850">
 </p>
 
 Hardware Components:
@@ -95,7 +98,7 @@ Hardware Components:
 # 📊 Dashboard
 
 <p align="center">
-<img src="assets/screenshots/dashboard.jpg.jpeg" width="900">
+<img src="assets/screenshots/dashboard.jpeg" width="900">
 </p>
 
 The dashboard allows administrators to monitor waste levels, environmental impact, system status, and cleaning activity in real time.
@@ -107,15 +110,15 @@ The dashboard allows administrators to monitor waste levels, environmental impac
 
 <p align="center">
 
-<img src="assets/screenshots/team.jpg.jpeg" width="47%">
+<img src="assets/screenshots/team.jpeg" width="47%">
 
-<img src="assets/screenshots/presentation.jpg.jpeg" width="47%">
+<img src="assets/screenshots/presentation.jpeg" width="47%">
 
 <br><br>
 
-<img src="assets/screenshots/expo.jpg.jpeg" width="47%">
+<img src="assets/screenshots/expo.jpeg" width="47%">
 
-<img src="assets/screenshots/prototype.jpg.jpeg" width="47%">
+<img src="assets/screenshots/prototype.jpeg" width="47%">
 
 </p>
 
@@ -207,7 +210,7 @@ git clone https://github.com/Nakshatravijayvargi/REVA.git
 Open:
 
 ```
-arduino/reva.ino
+arduino/REVA_Smartbin.ino
 ```
 
 Upload it to your Arduino Uno using the Arduino IDE.
