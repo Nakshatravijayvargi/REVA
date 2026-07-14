@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REVA | Smart Waste Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { transition: background-color 0.3s ease; overflow-x: hidden; }
+        .sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card { transition: all 0.3s ease; border: 1px solid rgba(22, 163, 74, 0.1); }
+        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .dark body { background-color: #0f172a; color: #f1f5f9; }
+        .dark .glass-card { background: #1e293b; border: 1px solid #334155; }
+        .alert-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .hidden { display: none; }
+        .r-menu-btn { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px; border: 2px solid white; cursor: pointer; background: rgba(255,255,255,0.1); }
+        .quote-fade { animation: fadeIn 1s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-80 bg-green-900 text-white z-[200] sidebar -translate-x-full shadow-2xl p-6 overflow-y-auto">
+        <div class="flex justify-between items-center mb-10">
+            <div>
+                <h2 class="text-2xl font-black italic tracking-tighter text-green-400 leading-none">REVA</h2>
+                <p class="text-[9px] uppercase tracking-[0.2em] mt-1 text-green-200 opacity-70">Cleaning Earth, One Throw at a Time</p>
+            </div>
+            <button onclick="toggleMenu()" class="text-3xl hover:text-red-400 transition">&times;</button>
+        </div>
+
+        <div class="mb-6">
+            <button onclick="toggleDrop('bin-drop')" class="w-full flex justify-between items-center py-3 border-b border-green-700 font-bold hover:text-green-400 transition text-sm">
+                <span><i class="fas fa-trash-alt mr-3"></i> ACTIVE BINS</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <div id="bin-drop" class="mt-2 space-y-2 hidden">
+                <button onclick="switchBin(1)" class="w-full text-left p-3 rounded hover:bg-green-800 text-[11px] flex flex-col border-l-4 border-green-400 bg-green-800/40">
+                    <span class="font-bold uppercase">Bin #001</span>
+                    <span class="opacity-70 uppercase">ADMIN WOXSEN UNIVERSITY</span>
+                </button>
+                <button onclick="switchBin(2)" class="w-full text-left p-3 rounded hover:bg-green-800 text-[11px] flex flex-col">
+                    <span class="font-bold uppercase">Bin #002</span>
+                    <span class="opacity-70 uppercase">CUP OF JOE</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <button onclick="toggleDrop('health-drop')" class="w-full flex justify-between items-center py-3 border-b border-green-700 font-bold hover:text-green-400 transition text-sm">
+                <span><i class="fas fa-microchip mr-3"></i> SYSTEM HEALTH</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <div id="health-drop" class="mt-2 space-y-3 p-3 text-[11px] hidden">
+                <div class="flex justify-between"><span>Ultrasonic Sensor</span><span class="text-green-400 font-bold uppercase">Online</span></div>
+                <div class="flex justify-between"><span>Arduino / ESP32</span><span class="text-green-400 font-bold uppercase">Online</span></div>
+                <div class="flex justify-between"><span>Servo Motor</span><span class="text-green-400 font-bold uppercase">Online</span></div>
+                <div class="flex justify-between"><span>Battery Level</span><span class="text-yellow-400 font-bold uppercase">82%</span></div>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <button onclick="toggleDrop('team-drop')" class="w-full flex justify-between items-center py-3 border-b border-green-700 font-bold hover:text-green-400 transition text-sm">
+                <span><i class="fas fa-users mr-3"></i> ABOUT CREATORS</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <div id="team-drop" class="mt-4 hidden space-y-4">
+                <div class="bg-white/10 p-3 rounded-lg text-[11px]">
+                    <p class="font-bold text-green-400 uppercase mb-1">Our Vision</p>
+                    <p class="italic text-gray-200">"Automating waste management to ensure a cleaner, smarter campus environment for everyone."</p>
+                </div>
+                <div class="space-y-2 text-[11px]">
+                    <div class="flex justify-between font-bold text-green-200"><span>Nirmaan V.</span><span>Lead Developer</span></div>
+                    <div class="flex justify-between font-bold text-green-200"><span>Nakshatra V.</span><span>Hardware Lead</span></div>
+                    <div class="flex justify-between font-bold text-green-200"><span>T. Chandrahas</span><span>IoT Specialist</span></div>
+                </div>
+                <a href="about.html" class="block w-full text-center bg-green-700 mt-4 py-2 rounded-lg text-xs font-bold hover:bg-green-600 transition">
+                    VIEW FULL PROJECT DETAILS
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-wrapper">
+        <div id="login-screen" class="flex items-center justify-center min-h-screen p-4 bg-green-50">
+            <div class="bg-white p-10 rounded-3xl shadow-2xl w-full max-w-md text-center border-t-8 border-green-600">
+                <h1 class="text-5xl font-black text-green-700 italic tracking-tighter">REVA</h1>
+                <p class="text-xs text-gray-400 uppercase tracking-[0.3em] font-bold mt-2">Cleaning Earth, One Throw at a Time</p>
+                <div class="my-10">
+                    <input type="password" id="auth-code" placeholder="ENTER ACCESS CODE" class="w-full p-4 border-2 border-gray-100 bg-gray-50 rounded-2xl mb-4 text-center text-2xl tracking-[0.5em] focus:ring-4 focus:ring-green-100 outline-none transition">
+                    <button onclick="handleLogin()" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-5 rounded-2xl transition shadow-xl shadow-green-900/20 uppercase tracking-widest">Launch System</button>
+                </div>
+                <p class="text-[10px] text-gray-300 italic">"The greatest threat to our planet is the belief that someone else will save it." – Robert Swan</p>
+            </div>
+        </div>
+
+        <div id="dashboard" class="hidden">
+            <nav class="bg-green-800 text-white h-28 flex items-center justify-between px-6 lg:px-12 shadow-lg sticky top-0 z-[150]">
+                <div class="flex items-center gap-6">
+                    <button onclick="toggleMenu()" class="r-menu-btn hover:bg-green-700 transition active:scale-90 shadow-inner">R</button>
+                    <div class="flex flex-col">
+                        <span id="active-bin-id" class="text-3xl font-black italic leading-none">BIN #001</span>
+                        <span id="user-role-badge" class="text-[10px] text-green-300 font-bold uppercase tracking-[0.3em] mt-1 mb-1 italic underline">SYSTEM ACCESS</span>
+                        <span id="active-bin-loc" class="text-[9px] bg-green-900/50 px-2 py-0.5 rounded border border-green-600 w-fit opacity-80 uppercase">ADMIN WOXSEN UNIVERSITY</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-8">
+                    <button onclick="logout()" class="text-2xl hover:text-red-400 transition active:scale-90"><i class="fas fa-power-off"></i></button>
+                </div>
+            </nav>
+
+            <main class="p-8 max-w-7xl mx-auto space-y-6">
+                <div class="bg-gradient-to-r from-green-600 to-green-500 text-white p-4 rounded-2xl shadow-lg flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <i class="fas fa-leaf text-2xl opacity-50"></i>
+                        <p id="green-quote" class="text-sm font-medium italic quote-fade">"Cleanliness is not next to godliness, it's next to happiness."</p>
+                    </div>
+                    <span class="text-[10px] bg-white/20 px-3 py-1 rounded-full font-bold uppercase">REVA Daily Fact</span>
+                </div>
+
+                <div id="critical-alert" class="hidden bg-red-600 text-white p-5 rounded-2xl flex items-center justify-between alert-pulse shadow-xl border-b-4 border-red-800">
+                    <div class="flex items-center gap-4">
+                        <i class="fas fa-dumpster-fire text-3xl text-yellow-300"></i>
+                        <div>
+                            <p class="font-bold uppercase text-sm">Action Required: Bin Full!</p>
+                            <p id="alert-text" class="text-xs opacity-90">Capacity Threshold (85%) reached. Audible alarm active.</p>
+                        </div>
+                    </div>
+                    <button id="alert-clean-btn" onclick="markCleaned()" class="bg-white text-red-600 px-6 py-2 rounded-xl font-black text-xs uppercase shadow-lg hover:bg-gray-100">Stop Alarm & Clean</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-card bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Real-Time Capacity</p>
+                        <p id="fill-text" class="text-6xl font-black text-gray-800 mt-1">0%</p>
+                        <div class="w-full bg-gray-100 rounded-full h-3 mt-4 overflow-hidden border border-gray-200">
+                            <div id="fill-bar" class="bg-green-500 h-full transition-all duration-1000 shadow-[0_0_10px_rgba(34,197,94,0.5)]" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="glass-card bg-white p-6 rounded-2xl shadow-sm text-center flex flex-col justify-center border-l-4 border-green-500">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Environment Impact</p>
+                        <p class="text-3xl font-black text-green-600 leading-none">1.2 Tons</p>
+                        <p class="text-[10px] text-gray-400 mt-2 font-medium italic">Carbon Footprint Saved</p>
+                    </div>
+                    <div class="glass-card bg-white p-6 rounded-2xl shadow-sm border-l-4 border-blue-500 text-center flex flex-col justify-center">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Eco-Score</p>
+                        <p class="text-5xl font-black text-blue-600 mt-1">9.4</p>
+                        <p class="text-[10px] text-gray-400 mt-2 italic">Campus Hygiene Grade</p>
+                    </div>
+                    <div class="glass-card bg-white p-6 rounded-2xl shadow-sm border-l-4 border-orange-500 text-center flex flex-col justify-center">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Smart Uptime</p>
+                        <p class="text-5xl font-black text-orange-500 mt-1">99<span class="text-xl">%</span></p>
+                        <p class="text-[10px] text-gray-400 mt-2 italic">Sensor Network Status</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <h3 class="font-black text-gray-800 uppercase tracking-tighter text-xl mb-6">Waste Accumulation Curve</h3>
+                        <canvas id="usageChart" height="120"></canvas>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col">
+                        <h3 class="font-black text-gray-800 mb-6 uppercase tracking-tighter text-xl">System Events</h3>
+                        <div class="space-y-4 overflow-y-auto max-h-[320px] flex-grow pr-2" id="cleaning-log"></div>
+                        <button id="main-clean-btn" onclick="markCleaned()" class="w-full mt-6 bg-green-600 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-green-700 transition shadow-lg flex items-center justify-center gap-2">
+                            <i class="fas fa-check-circle"></i> Marked as Cleaned
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // JS logic remains the same to keep functionality intact
+        const CODES = { "7777": "admin", "3333": "staff", "5555": "guest" };
+        const QUOTES = [
+            "Cleaning Earth, one throw at a time.",
+            "Recycling is a simple act with a global impact.",
+            "A clean campus is a happy campus.",
+            "The best way to predict the future is to create a clean one.",
+            "Don't be trashy, keep it classy!"
+        ];
+        
+        let currentUserRole = "";
+        let currentBin = 1;
+        let binData = {
+            1: { id: "001", loc: "ADMIN WOXSEN UNIVERSITY", fill: 35 },
+            2: { id: "002", loc: "CUP OF JOE", fill: 10 }
+        };
+
+        let alarmInterval = null;
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playHarshBeep(freq, duration) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc1 = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc1.type = 'square'; 
+            osc1.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            osc1.connect(gain);
+            gain.connect(audioCtx.destination);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            osc1.start();
+            osc1.stop(audioCtx.currentTime + duration);
+        }
+
+        function triggerLoudPattern() {
+            playHarshBeep(880, 0.15);
+        }
+
+        function startAlarm() {
+            if (!alarmInterval) {
+                triggerLoudPattern();
+                alarmInterval = setInterval(triggerLoudPattern, 1500);
+            }
+        }
+
+        function stopAlarm() {
+            if (alarmInterval) {
+                clearInterval(alarmInterval);
+                alarmInterval = null;
+            }
+        }
+
+        function rotateQuotes() {
+            const quoteEl = document.getElementById('green-quote');
+            const randomQuote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+            quoteEl.innerText = `"${randomQuote}"`;
+        }
+
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('-translate-x-full'); }
+        function toggleDrop(id) { document.getElementById(id).classList.toggle('hidden'); }
+
+        function switchBin(id) {
+            currentBin = id;
+            document.getElementById('active-bin-id').innerText = `BIN #${binData[id].id}`;
+            document.getElementById('active-bin-loc').innerText = binData[id].loc;
+            updateFillUI();
+            toggleMenu();
+        }
+
+        function handleLogin() {
+            const role = CODES[document.getElementById('auth-code').value];
+            if(role) {
+                currentUserRole = role;
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                document.getElementById('user-role-badge').innerText = `${role.toUpperCase()} ACCESS`;
+                initChart();
+                setInterval(simulateWaste, 8000);
+                setInterval(rotateQuotes, 10000);
+            } else { alert("ACCESS DENIED"); }
+        }
+
+        function simulateWaste() {
+            if(binData[currentBin].fill < 100) {
+                binData[currentBin].fill += Math.floor(Math.random() * 5);
+                updateFillUI();
+            }
+        }
+
+        function updateFillUI() {
+            const level = binData[currentBin].fill;
+            document.getElementById('fill-text').innerText = `${level}%`;
+            document.getElementById('fill-bar').style.width = `${level}%`;
+            
+            const alertBox = document.getElementById('critical-alert');
+            if(level >= 85) {
+                alertBox.classList.remove('hidden');
+                startAlarm();
+            } else {
+                alertBox.classList.add('hidden');
+                stopAlarm();
+            }
+        }
+
+        function markCleaned() {
+            if(currentUserRole === "guest") return;
+            binData[currentBin].fill = 0;
+            updateFillUI();
+            addLogEntry(`Bin #${binData[currentBin].id} Cleaned`, new Date().toLocaleTimeString());
+        }
+
+        function addLogEntry(msg, time) {
+            const log = document.getElementById('cleaning-log');
+            const el = document.createElement('div');
+            el.className = "flex justify-between items-center p-4 bg-gray-50 rounded-2xl border-l-4 border-green-500 text-[10px] shadow-sm";
+            el.innerHTML = `<span class="font-black uppercase text-gray-700">${msg}</span><span class="font-mono text-green-600">${time}</span>`;
+            log.prepend(el);
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('usageChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00'],
+                    datasets: [{
+                        data: [5, 12, 45, 22, 65, 88, 92],
+                        borderColor: '#16a34a',
+                        borderWidth: 4,
+                        tension: 0.4,
+                        fill: true,
+                        backgroundColor: 'rgba(22, 163, 74, 0.05)'
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false } } } }
+            });
+        }
+
+        function logout() { window.location.reload(); }
+    </script>
+</body>
+</html>
